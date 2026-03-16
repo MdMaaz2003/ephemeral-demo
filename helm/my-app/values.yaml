@@ -5,20 +5,22 @@ image:
   tag: latest
 
 service:
+  type: ClusterIP
   port: 80
-
-ingress:
-  host: my-app.local
 
 serviceAccount:
   create: false
   automount: false
   annotations: {}
+  name: ""
 
 autoscaling:
   enabled: false
-  minReplicas: 1
-  maxReplicas: 5
-  targetCPUUtilizationPercentage: 80
+
+httpRoute:
+  enabled: false
+
+ingress:
+  host: my-app.local
 
   
