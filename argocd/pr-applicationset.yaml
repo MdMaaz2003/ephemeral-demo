@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: ephemeral-pr-envs
+  namespace: argocd
+
+spec:
+
+  generators:
+  - pullRequest:
+      github:
+        owner: YOUR_GITHUB_USERNAME
+        repo: ephemeral-demo
+
+        tokenRef:
+          secretName: github-token
+          key: token
+
+      requeueAfterSeconds: 60
+
+  template:
+
+    metadata:
+      name: pr-{{number}}
+
+    spec:
+
+      project: default
+
+      source:
+        repoURL: https://github.com/YOUR_GITHUB_USERNAME/ephemeral-demo.git
+        targetRevision: "{{head_sha}}"
+        path: helm/my-app
+
+        helm:
+          valueFiles:
+          - values.yaml
+          - values-ephemeral.yaml
+
+          parameters:
+          - name: ingress.host
+            value: pr-{{number}}.127.0.0.1.nip.io
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: pr-{{number}}
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+        syncOptions:
+        - CreateNamespace=true
