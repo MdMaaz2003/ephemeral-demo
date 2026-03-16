@@ -5,7 +5,22 @@ image:
   tag: latest
 
 service:
+  type: ClusterIP
   port: 80
+
+serviceAccount:
+  create: false
+  automount: false
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+
+httpRoute:
+  enabled: false
 
 ingress:
   host: my-app.local
+
+  
