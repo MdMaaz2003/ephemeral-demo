@@ -10,9 +10,9 @@ service:
 
 serviceAccount:
   create: false
-  automount: false
-  annotations: {}
   name: ""
+  annotations: {}
+  automount: false
 
 autoscaling:
   enabled: false
