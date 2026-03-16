@@ -10,7 +10,7 @@ spec:
   generators:
   - pullRequest:
       github:
-        owner: YOUR_GITHUB_USERNAME
+        owner: MdMaaz2003
         repo: ephemeral-demo
 
         tokenRef:
@@ -29,7 +29,7 @@ spec:
       project: default
 
       source:
-        repoURL: https://github.com/YOUR_GITHUB_USERNAME/ephemeral-demo.git
+        repoURL: https://github.com/MdMaaz2003/ephemeral-demo.git
         targetRevision: "{{head_sha}}"
         path: helm/my-app
 
