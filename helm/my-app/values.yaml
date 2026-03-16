@@ -4,5 +4,8 @@ image:
   repository: nginx
   tag: latest
 
+service:
+  port: 80
+
 ingress:
   host: my-app.local
