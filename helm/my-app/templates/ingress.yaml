@@ -22,4 +22,4 @@ spec:
           service:
             name: my-app
             port:
-              number: 80
+              number: {{ .Values.service.port }}

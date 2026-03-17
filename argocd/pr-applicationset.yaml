@@ -7,6 +7,10 @@ metadata:
 
 spec:
 
+  # Delete apps (and their namespace) when PR is closed/merged
+  syncPolicy:
+    preserveResourcesOnDeletion: false
+
   generators:
   - pullRequest:
       github:
@@ -17,7 +21,7 @@ spec:
           secretName: github-token
           key: token
 
-      requeueAfterSeconds: 60
+      requeueAfterSeconds: 30
 
   template:
 
@@ -53,3 +57,7 @@ spec:
 
         syncOptions:
         - CreateNamespace=true
+
+        managedNamespaceMetadata:
+          labels:
+            managed-by: argocd-ephemeral

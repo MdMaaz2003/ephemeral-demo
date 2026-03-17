@@ -5,12 +5,12 @@ metadata:
   name: my-app
 
 spec:
+  type: {{ .Values.service.type }}
+
   selector:
     app: my-app
 
   ports:
-  - port: 80
+  - port: {{ .Values.service.port }}
     targetPort: 80
-
-
-    
+    protocol: TCP
