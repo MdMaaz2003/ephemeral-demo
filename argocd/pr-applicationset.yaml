@@ -40,7 +40,7 @@ spec:
 
           parameters:
           - name: ingress.host
-            value: pr-{{number}}.127.0.0.1.nip.io
+            value: pr-{{number}}.192.168.49.2.nip.io
 
       destination:
         server: https://kubernetes.default.svc
