@@ -57,7 +57,3 @@ spec:
 
         syncOptions:
         - CreateNamespace=true
-
-        managedNamespaceMetadata:
-          labels:
-            managed-by: argocd-ephemeral
