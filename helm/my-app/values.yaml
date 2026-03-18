@@ -1,7 +1,7 @@
 replicaCount: 2
 
 image:
-  repository: nginx
+  repository: traefik/whoami
   tag: latest
   pullPolicy: Always
 
